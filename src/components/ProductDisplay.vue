@@ -18,9 +18,21 @@
             <h2 class="title">{{ product.title }}</h2>
 
             <div class="category-row">
-              <span>{{ product.category }}</span>
-              <span class="rating">{{ product.rating?.rate }}/5</span>
+                <span>{{ product.category }}</span>
+                
+                <div class="rating-container">
+                    <span style="margin-right: 10px; font-weight: 700;">{{ product.rating && product.rating.rate }}/5</span>
+                    
+                    <div 
+                    v-for="i in 5" 
+                    :key="i" 
+                    class="circle"
+                    :class="{ 'filled': i <= Math.round(product.rating.rate) }"
+                    ></div>
+                </div>
             </div>
+
+            <hr> ```
 
             <div class="description">
               <p>{{ product.description }}</p>
