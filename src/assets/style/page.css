@@ -1,5 +1,4 @@
 :root {
-  /* Color Palette sesuai di Figma */
   --men-primary: #002772;
   --men-bg: #D6E6FF;
   --women-primary: #720060;
@@ -12,60 +11,42 @@
 
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; /* Font lebih modern */
   background-color: var(--white);
+  color: var(--text-main);
 }
 
-/* Container Utama */
+/* CONTAINER: Kasih padding biar gak mepet layar hehe */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  position: relative;
-  /* Pattern background (segitiga/bulat) sebenarnya butuh gambar asset, 
-     tapi warna background akan dihandle oleh class binding di bawah */
+  padding: 40px; /* Jarak aman dari pinggir layar */
+  box-sizing: border-box; 
 }
 
-/* Card Produk */
+/* CARD: Dikecilin & Dibuat lebih elegan menurut aku */
 .product-card {
   background-color: var(--white);
-  width: 80%;
-  max-width: 1000px;
-  min-height: 550px; /* Tinggi minimum biar konsisten */
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Shadow halus */
+  width: 100%;
+  max-width: 900px; /* Batasi lebar maksimal biar gak "Zoomed In" */
+  min-height: 500px;
+  border-radius: 20px; /* Sudut lebih tumpul biar modern */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15); /* Shadow lebih lembut & luas */
   padding: 50px;
   display: flex;
   position: relative;
   z-index: 2;
+  transition: all 0.3s ease; /* Animasi halus */
 }
 
-/* LOADING SPINNER (Sesuai Instruksi Poin 3) */
-.loader-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 400px;
-}
-.loader {
-  border: 8px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 8px solid var(--men-primary); /* Default biru */
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-}
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-/* LAYOUT KONTEN */
+/* Layout Konten */
 .product-content {
   display: flex;
   width: 100%;
-  gap: 40px;
+  gap: 60px; /* Jarak antar gambar dan teks lebih lega */
 }
 
 .product-image {
@@ -75,84 +56,168 @@ body {
   justify-content: center;
 }
 .product-image img {
-  max-width: 300px;
-  max-height: 400px;
+  max-width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); /* Gambar dikasih bayangan dikit */
 }
 
 .product-details {
   flex: 1.5;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-/* Typography */
+/* Typography yang lebih rapi */
 .title {
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 20px;
-  color: var(--men-primary); /* Default */
+  line-height: 1.2;
 }
 
 .category-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
+  margin-bottom: 20px;
   color: #888;
   font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
+/* RATING VISUAL (Bunder-bunder Keren) */
+.rating-container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: transparent; 
+  border: 2px solid currentColor; /* Ikut warna text (Biru/Ungu) */
+}
+
+.circle.filled {
+  background-color: currentColor; /* Kalau penuh, warnanya diisi */
+}
+
+/* Description & Price */
 .description {
   font-size: 16px;
-  color: var(--text-main);
-  line-height: 1.5;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
   border-top: 1px solid #eee;
   padding-top: 20px;
-  flex-grow: 1;
+  flex-grow: 1; /* Biar tombol selalu di bawah */
 }
 
 .price {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: var(--men-primary); /* Default */
+  font-size: 32px; /* Harga lebih besar */
+  font-weight: 700;
+  margin-bottom: 25px;
 }
 
-/* Tombol */
+/* Tombol yang lebih "Clickable" */
 .actions {
   display: flex;
   gap: 20px;
 }
 .btn {
   flex: 1;
-  padding: 12px;
+  padding: 14px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
-  border-radius: 4px;
-  border: 2px solid;
-  transition: 0.2s;
+  border-radius: 8px; /* Sudut tombol tumpul */
+  border: 3px solid; /* Border lebih tebal */
+  transition: transform 0.2s, box-shadow 0.2s; /* Efek tekan */
 }
 
-/* THEMA CLASS BINDING (Sesuai Logic) */
+.btn:hover {
+  transform: translateY(-2px); /* Naik dikit pas di-hover */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
 
-/* 1. Page Men's Clothing */
-.page-men { background-color: var(--men-bg); }
-.page-men .title, .page-men .price { color: var(--men-primary); }
-.page-men .btn-buy { background-color: var(--men-primary); color: white; border-color: var(--men-primary); }
-.page-men .btn-next { background-color: white; color: var(--men-primary); border-color: var(--men-primary); }
-.page-men .loader { border-top-color: var(--men-primary); }
+.btn:active {
+  transform: translateY(0);
+}
 
-/* 2. Page Women's Clothing */
-.page-women { background-color: var(--women-bg); }
-.page-women .title, .page-women .price { color: var(--women-primary); }
-.page-women .btn-buy { background-color: var(--women-primary); color: white; border-color: var(--women-primary); }
-.page-women .btn-next { background-color: white; color: var(--women-primary); border-color: var(--women-primary); }
-.page-women .loader { border-top-color: var(--women-primary); }
+/* --- THEMES --- */
+.page-men { 
+    background-color: var(--men-bg); 
+    color: var(--men-primary); 
+}
 
-/* 3. Page Unavailable */
-.page-unavailable { background-color: var(--unavailable-bg); }
+.page-men .title, .page-men .price { 
+    color: var(--men-primary); 
+}
+
+.page-men .btn-buy { 
+    
+    background-color: var(--men-primary); 
+    color: white; 
+    border-color: var(--men-primary); 
+}
+
+.page-men .btn-next { 
+    background-color: white; 
+    color: var(--men-primary); 
+    border-color: var(--men-primary); 
+}
+
+/* Warna Loader & Circle Rating ikut warna text */
+.page-men .loader { 
+    border-top-color: var(--men-primary); 
+}
+
+.page-men .circle { 
+    color: var(--men-primary); 
+    border-color: var(--men-primary); 
+}
+
+.page-women { 
+    background-color: var(--women-bg); 
+    color: var(--women-primary); 
+}
+
+.page-women .title, .page-women .price { 
+    color: var(--women-primary); 
+}
+
+.page-women .btn-buy { 
+    background-color: var(--women-primary); 
+    color: white; 
+    border-color: var(--women-primary); 
+}
+
+.page-women .btn-next { 
+    background-color: white; 
+    color: var(--women-primary); 
+    border-color: var(--women-primary); 
+}
+
+.page-women .loader { 
+    border-top-color: var(--women-primary); 
+}
+
+.page-women .circle { 
+    color: var(--women-primary); 
+    border-color: var(--women-primary); 
+}
+
+/* Unavailable styling tetap sama tapi dirapikan */
+.page-unavailable { 
+    background-color: var(--unavailable-bg); 
+    color: var(--text-main); 
+}
+
 .unavailable-content {
   display: flex;
   flex-direction: column;
@@ -160,16 +225,11 @@ body {
   justify-content: center;
   width: 100%;
   text-align: center;
+  height: 400px;
 }
-.unavailable-text { 
-    margin-top: 100px; 
-    font-size: 20px; 
-    margin-bottom: 20px; 
-}
-
 .page-unavailable .btn-next {
-  width: 100%; 
-  max-width: 400px; 
+  width: auto; 
+  padding: 12px 50px; 
   background: white; 
   color: black; 
   border-color: black;
@@ -179,32 +239,61 @@ body {
     border-top-color: var(--unavailable-primary); 
 }
 
-/* SAD FACE */
-.sad-face {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 30px; /* Jarak ke tulisan */
+/* Loader CSS (Tetap sama) */
+.loader-container { 
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 400px; 
 }
 
-.eyes-container {
-  display: flex;
-  gap: 60px; /* Jarak antar mata */
-  margin-bottom: 20px;
+.loader { 
+    border: 8px solid #f3f3f3; 
+    border-radius: 50%; 
+    border-top: 8px solid; 
+    width: 60px; 
+    height: 60px; 
+    animation: spin 1s linear infinite; 
 }
 
-.eye {
-  width: 70px;
-  height: 70px;
-  background-color: #dcdcdc; /* Warna abu-abu sesuai desain */
-  border-radius: 50%; /* Membuat kotak jadi bulat sempurna */
+@keyframes spin { 
+    0% { 
+    transform: rotate(0deg); 
+    } 
+    
+    100% { 
+        transform: rotate(360deg); 
+    } 
 }
 
-.mouth {
-  width: 250px;
-  height: 100px;
-  border: 15px solid #dcdcdc; /* Ketebalan bibir */
-  border-bottom: 0; /* Hapus border bawah biar tidak jadi kotak */
-  border-top-left-radius: 150px; /* Lengkungan kiri */
-  border-top-right-radius: 150px; /* Lengkungan kanan */
+/* Sad Face CSS (Dari jawaban sebelumnya) */
+.sad-face { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+
+.eyes-container { 
+    display: flex; 
+    gap: 60px; 
+    margin-bottom: 20px; 
+}
+
+.eye { 
+    width: 70px; 
+    height: 70px; 
+    background-color: #dcdcdc; 
+    border-radius: 50%; 
+}
+
+.mouth { 
+    width: 250px; 
+    height: 100px; 
+    border: 15px solid #dcdcdc; 
+    border-bottom: 0; 
+    border-top-left-radius: 150px; 
+    border-top-right-radius: 150px; 
 }
