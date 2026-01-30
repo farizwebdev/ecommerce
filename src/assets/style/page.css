@@ -224,19 +224,38 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  height: 100%; /* Pastikan konten ada di tengah-tengah kartu vertical */
   text-align: center;
-  height: 400px;
 }
 
+/* Mengatur ukuran gambar Sad Face */
+.sad-face-img {
+  width: 100%;
+  max-width: 500px; /* Sesuaikan biar gak terlalu raksasa, tapi cukup lebar */
+  height: auto;
+  margin-bottom: 30px; /* Jarak gambar ke tulisan */
+}
+
+.unavailable-text {
+  font-size: 20px;
+  color: var(--text-main);
+  margin-bottom: 20px;
+}
+
+/* Tombol Khusus Halaman Unavailable (Sesuai Desain) */
 .page-unavailable .btn-next {
-  width: 100%;          
-  max-width: 480px;     
-  background: white;
+  width: 100%;
+  max-width: 480px; /* Lebar tombol disamakan kira-kira dengan lebar gambar */
+  background-color: white;
   color: black;
-  border-color: black;  
-  margin-top: 20px;     
-  display: block;       
+  border: 3px solid black; /* Border hitam tebal */
+  margin-top: 10px;
+}
+
+/* Efek Hover Tombol */
+.page-unavailable .btn-next:hover {
+  background-color: #f0f0f0; /* Abu-abu dikit pas di hover */
+  transform: translateY(-2px);
 }
 
 .page-unavailable .loader { 
@@ -270,36 +289,6 @@ body {
     100% { 
         transform: rotate(360deg); 
     } 
-}
-
-/* Sad Face CSS (Dari jawaban sebelumnya) */
-.sad-face { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    margin-bottom: 30px; 
-}
-
-.eyes-container { 
-    display: flex; 
-    gap: 60px; 
-    margin-bottom: 20px; 
-}
-
-.eye { 
-    width: 70px; 
-    height: 70px; 
-    background-color: #dcdcdc; 
-    border-radius: 50%; 
-}
-
-.mouth { 
-    width: 250px; 
-    height: 100px; 
-    border: 15px solid #dcdcdc; 
-    border-bottom: 0; 
-    border-top-left-radius: 150px; 
-    border-top-right-radius: 150px; 
 }
 
 /* RESPONSIVE / MOBILE VIEW */

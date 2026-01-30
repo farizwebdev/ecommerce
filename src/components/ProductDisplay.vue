@@ -45,15 +45,11 @@
         </div>
 
         <div v-else class="unavailable-content">
-            <div class="sad-face">
-                <div class="eyes-container">
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-                </div>
-                <div class="mouth"></div>
-            </div>
-            <p class="unavailable-text">This product is unavailable to show</p>
-            <button class="btn btn-next" @click="nextProduct">Next product</button>
+          <img src="../assets/sad-face.png" alt="Sad Face" class="sad-face-img">
+          
+          <p class="unavailable-text">This product is unavailable to show</p>
+          
+          <button class="btn btn-next" @click="nextProduct">Next product</button>
         </div>
 
       </div>
