@@ -1,6 +1,32 @@
 <template>
   <div class="container" :class="containerClass">
 
+    <div v-if="showModal" class="modal-overlay">
+      <div class="modal-box">
+        <h3>Haloo, Selamat Datang!</h3>
+        <p>Project ini adalah katalog produk yang mengambil data langsung dari <b>FakeStoreAPI</b> (Index 1-20).</p>
+
+        <div class="info-list">
+          <div class="info-item">
+            <span class="badge men">4</span>
+            <span>Pakaian Pria</span>
+          </div>
+          <div class="info-item">
+            <span class="badge women">6</span>
+            <span>Pakaian Wanita</span>
+          </div>
+          <div class="info-item">
+            <span class="badge unavailable">10</span>
+            <span>Tidak Tersedia (Kategori Lain)</span>
+          </div>
+        </div>
+
+        <p class="note">Klik tombol "Next Product" untuk melihat produk selanjutnya.</p>
+
+        <button class="btn-start" @click="closeModal">Mulai Sekarang</button>
+      </div>
+    </div>
+
     <div class="product-card">
 
       <div v-if="loading" class="loader-container">
@@ -46,9 +72,9 @@
 
         <div v-else class="unavailable-content">
           <img src="../assets/sad-face.png" alt="Sad Face" class="sad-face-img">
-          
+
           <p class="unavailable-text">This product is unavailable to show</p>
-          
+
           <button class="btn btn-next" @click="nextProduct">Next product</button>
         </div>
 
@@ -67,7 +93,8 @@ export default {
       product: {}, // Data produk
       loading: false, // Status loading
       isUnavailable: false, // Status availability
-      categoryClass: '' // Helper untuk class CSS
+      categoryClass: '', // Helper untuk class CSS
+      showModal: true // Default true biar muncul pas load
     }
   },
   computed: {
@@ -113,6 +140,10 @@ export default {
     nextProduct () {
       this.index++ // Increment index
       this.getProduct() // Panggil API lagi
+    },
+    // Method tutup modal
+    closeModal () {
+      this.showModal = false
     }
   },
   mounted () {
