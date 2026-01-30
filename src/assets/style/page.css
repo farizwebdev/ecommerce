@@ -14,6 +14,7 @@ body {
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; /* Font lebih modern */
   background-color: var(--white);
   color: var(--text-main);
+  overflow-y: hidden; /* Hilangkan scrollbar vertikal */
 }
 
 /* CONTAINER: Kasih padding biar gak mepet layar hehe */
@@ -21,9 +22,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh; /* Paksa tinggi pas 100% layar */
   width: 100%;
-  padding: 40px; /* Jarak aman dari pinggir layar */
+  padding: 0; /* Reset padding biar container pas di tengah */
   box-sizing: border-box; 
 }
 
@@ -385,5 +386,72 @@ body {
   
   .btn {
     width: 100%;
+  }
+}
+
+
+/* LAPTOP COMPACT MODE */
+/* Aktif jika layar lebar (desktop) TAPI tingginya di bawah 850px */
+@media screen and (min-width: 769px) and (max-height: 850px) {
+  
+  /* Kecilkan Card */
+  .product-card {
+    height: 85vh; /* Tinggi card 85% dari layar */
+    width: 90%;   /* Lebar card 90% dari layar */
+    max-width: 900px;
+    padding: 30px; /* Padding didalam card ditipisin */
+    min-height: auto; /* Reset min-height */
+  }
+
+  /* Layout Konten */
+  .product-content {
+    height: 100%;
+    align-items: center;
+  }
+
+  /* Kecilkan Gambar secara signifikan */
+  .product-image img {
+    max-height: 250px; /* Gambar dibatasi tingginya */
+    width: auto;
+  }
+
+  /* Typography lebih compact */
+  .title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    font-size: 13px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    padding-top: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Maksimal 5 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .price {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .category-row {
+    margin-bottom: 10px;
+  }
+
+  /* Tombol lebih tipis */
+  .btn {
+    padding: 10px;
+  }
+  
+  /* Sesuaikan Sad Face di laptop */
+  .unavailable-content {
+    height: 100%;
+  }
+  .sad-face {
+    transform: scale(0.8); /* Kecilkan wajah sedih */
+    margin-bottom: 10px;
   }
 }
