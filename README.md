@@ -41,7 +41,7 @@ Tampilan UI secara otomatis beradaptasi berdasarkan kategori produk yang diambil
 
 Jika Anda ingin menjalankan proyek ini secara lokal di komputer Anda, ikuti langkah-langkah berikut:
 
-### 1. Clone repository
+1. Clone repository
 ```bash
 git clone [https://github.com/farizwebdev/ecommerce-catalog.git](https://github.com/farizwebdev/ecommerce-catalog.git)
 cd ecommerce-catalog
@@ -84,8 +84,8 @@ ecommerce-catalog/
 
 Fariz Husain Albar Mahasiswa Informatika UIN Sunan Kalijaga.
 
-GitHub: farizwebdev
+ - GitHub: farizwebdev
 
-LinkedIn: Fariz Husain Albar
+ - LinkedIn: Fariz Husain Albar
 
 Copyright © 2026. All rights reserved.
